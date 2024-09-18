@@ -19,9 +19,9 @@ app.set('view engine', 'ejs');
 let posts = [];
 
 app.get("/", function(req, res) {
-  res.render('home',
-  {
-    firstPara: homeStartingContent
+  res.render('home', {
+    firstPara: homeStartingContent,
+    posts: posts
   });
   
 });
@@ -52,6 +52,13 @@ app.post("/compose", function(req, res){
   }
   posts.push(post);
   res.redirect("/")
+})
+
+app.get("/posts/:postName", function(req, res){
+  // res.send(req.params)
+  
+  console.log(req.params.postName);
+
 })
 
 app.listen(3000, function() {
